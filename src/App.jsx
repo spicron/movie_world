@@ -1,13 +1,20 @@
 import React, { useState } from 'react'
+import { Routes,Route,useLocation } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import Searchbar from './components/searchbar/Searchbar'
 import Moviecard from './components/moviecard/Moviecard'
+import Footer from './components/footer/Footer';
+import Home from './components/linkpage/Home';
+import About from './components/linkpage/About';
+import Contact from './components/linkpage/Contact';
+import Service from './components/linkpage/Service';
 
 function App() {
 
 const [allMovieData , setAllMovieData]=useState([]);
 const [searchMovie , setSearchMovie]=useState('');
 const [loading, setLoading]=useState(false);
+const location = useLocation();
 
 const fetchMovieData = async()=>{
  try {
@@ -22,14 +29,31 @@ const fetchMovieData = async()=>{
  }
 }
 
+const noSearchRoutes = ['/about', '/contact', '/service'];
+const shouldRenderSearch = () => {
+  return !noSearchRoutes.includes(location.pathname);
+};
+
   return (
     <>
-    <Navbar/>
-    <div className="bg">
-    <Searchbar searchMovie={searchMovie} setSearchMovie={setSearchMovie} fetchMovieData={fetchMovieData}/>
-     <Moviecard allMovieData={allMovieData} loading={loading}/>
-    </div>
-
+    
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/service" element={<Service />} />
+        </Routes>
+      
+        {shouldRenderSearch() && (
+        <>
+          <div className="bg">
+            <Searchbar searchMovie={searchMovie} setSearchMovie={setSearchMovie} fetchMovieData={fetchMovieData} />
+            <Moviecard allMovieData={allMovieData} loading={loading} />
+          </div>
+        </>
+      )}
+        <Footer />
     </>
   )
 }

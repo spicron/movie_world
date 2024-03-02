@@ -1,5 +1,6 @@
 import React from 'react'
 import myImage from "../../assets/movie_logo.jpg"
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
@@ -7,14 +8,14 @@ function Navbar() {
         <div className="left flex space-x-3 items-center justify-center ">
           <img src={myImage} alt="logo"
           className='w-10' />
-          <h2 className='text-white text-2xl font-bold justify-center'>MOVIE WORLD</h2>
+          <h2 className='text-white text-2xl font-bold justify-center'><Link to="/">MOVIE WORLD</Link></h2>
         </div>
         <div className="right">
           <ul className='flex  space-x-6  text-white font-medium justify-center'>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contacts</li>
-            <li>Service</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/service">Service</Link></li>
           </ul>
         </div>
     </div>
