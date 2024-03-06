@@ -24,7 +24,7 @@ function Footer() {
         <footer>
             <div className="flex sm:flex-wrap w-full p-4 text-white font-medium bg-[#ff0040] justify-center items-center">
                 <span>© 2024 Copyright : Spicron</span>
-                <span className="ml-2">All rights reserved Spicron.</span>
+                <span className="ml-2">All rights reserved Spicron 2024.</span>
                 <a href="mailto:sg133311@gmail.com" className="text-white font-bold px-1">
                     <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                     
